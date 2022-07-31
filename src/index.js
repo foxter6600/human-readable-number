@@ -43,8 +43,14 @@ module.exports = function toReadable(number) {
         return single[number];
     } else if (number < 20) {
         return teens[numberArr[1]];
+    } else if (number < 100 && numberArr[1] == "0") {
+        return tys[numberArr[0]];
     } else if (number < 100) {
         return tys[numberArr[0]] + " " + single[numberArr[1]];
+    } else if (number < 1000 && numberArr[1] == "0" && numberArr[2] == "0") {
+        return single[numberArr[0]] + " " + hundred;
+    } else if (number < 1000 && numberArr[2] == "0") {
+        return single[numberArr[0]] + " " + hundred + " " + tys[numberArr[1]];
     } else {
         return (
             single[numberArr[0]] +
